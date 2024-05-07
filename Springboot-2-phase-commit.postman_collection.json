@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "1ae8a590-006c-4880-a01a-50105e0d897a",
+		"name": "Springboot-2-phase-commit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33936986"
+	},
+	"item": [
+		{
+			"name": "Commit Order-Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderNumber\": \"2586cp\",\r\n    \"item\": \"HP 7gen laptop\",\r\n    \"price\": \"$1500\",\r\n    \"paymentMode\": \"PENDING\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/initiate_2pc"
+			},
+			"response": []
+		},
+		{
+			"name": "Role-back Order-Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"orderNumber\": \"2586rp\",\r\n  \"item\": \"HP 7gen laptop\",\r\n  \"price\": \"$1500\",\r\n  \"paymentMode\": \"NOT_PREPARED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/initiate_2pc"
+			},
+			"response": []
+		}
+	]
+}
